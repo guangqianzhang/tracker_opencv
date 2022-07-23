@@ -57,13 +57,13 @@ int main(int argc, char *argv[])
         cv::Mat current_frame;
         current_frame = yolo_->detect(workFrame, yoloRet);
         //获取 jiancekuang
-        global::trackRet=yoloRet;
+
         cv::Mat imgGray;
         cv::cvtColor(frame,imgGray,cv::COLOR_BGR2GRAY);
-        match.pushFrame(imgGray,global::trackRet);
+        match.pushFrame(imgGray,yoloRet);
         match.detect_keyPoints(imgGray);
         match.extract_keyPoints();
-        match.match_keyPoints();
+        match.match_keyPoints(global::trackRet);
 
 
         imshow(winName, current_frame);

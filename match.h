@@ -38,10 +38,20 @@ public:
     void detect_keyPoints(cv::Mat imgGray);
     void extract_keyPoints();
 
-    void match_keyPoints();
+    void match_keyPoints(std::vector<YoloDetSt> &trackRet);
 
     void matchBoundingBoxes(vector<cv::DMatch> &matches, map<int, int> &bbBestMatches, DataFrame &prevFrame,
                             DataFrame &currFrame);
+
+    void matchShow(const std::vector<YoloDetSt> currBBs);
+
+    void matchShow(const vector<YoloDetSt> currBBs, const vector<YoloDetSt> ptreBBs);
+    std::vector<int> getVector(const std::vector<YoloDetSt> &Xs){
+        std::vector<int> vec;
+        for (int i = 0; i < Xs.size(); ++i) {
+            vec.push_back(Xs[i].boxID);
+        }
+    }
 };
 
 

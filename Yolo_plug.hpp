@@ -275,7 +275,7 @@ void Yolo::postprocess(cv::Mat &frame, const std::vector<cv::Mat> &outs, cv::dnn
 		{
 			CV_Assert(classIds[idx] < (int)m_classes.size());
 		}
-		yoloRet.push_back(YoloDetSt{m_classes[classIds[idx]], confidences[idx], boxes[idx],classIds[idx],idx});
+		yoloRet.push_back(YoloDetSt{m_classes[classIds[idx]], confidences[idx], boxes[idx],classIds[idx],yoloRet.size()});
 	}
 }
 
